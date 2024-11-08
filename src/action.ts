@@ -35,7 +35,7 @@ async function parsePropertiesFromPayload(options: PayloadParsingOptions): Promi
   const result: CustomValueMap = {
     Name: properties.title(payload.issue.title),
     Status: properties.getStatusSelectOption(payload.issue.state!),
-    Organization: properties.text(payload.organization?.login ?? payload.owner?.login ?? ''),
+    Organization: properties.text(payload.organization?.login ?? payload.repository?.owner.login ?? ''),
     Repository: properties.text(payload.repository.name),
     Number: properties.number(payload.issue.number),
     Body: properties.richText(parseBodyRichText(payload.issue.body)),
